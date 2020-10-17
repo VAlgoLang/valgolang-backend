@@ -5,6 +5,16 @@ ManimDSL API Backend Server using Express and TypeScript
 
 ### Installation
 
+#### Docker
+
+If you haven't installed the ManimDSL Compiler or want a quick way to startup the best way is to use docker:
+
+` docker run -p 5000:5000 manimdsl/manimdsl-api  `
+
+And go to `localhost:5000` in a browser.
+
+#### Alternative Instructions
+
 1. Clone this repo
 2. Run `npm install` to get all the dependencies
 3. If you'd like the latest published version then run `./fetchCompiler` to get the latest compiler (otherwise build 
