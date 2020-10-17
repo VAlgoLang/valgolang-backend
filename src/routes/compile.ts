@@ -10,7 +10,7 @@ export const compileRoutes = (upload: Multer) => {
         console.log("Received animation request")
         let compileRequest = req.body as CompileRequest
         compileRequest.file = req.file
-        compileRequest.pythonFile = req.body.pythonFile === "true"
+        compileRequest.pythonFile = req.body.pythonFile === "on"
 
         // set default to "out" and strip any extension
         if(!compileRequest.outputName || compileRequest.outputName.length === 0) {
