@@ -1,4 +1,3 @@
-import {rootRoutes} from "./routes/root";
 import {compileRoutes} from "./routes/compile";
 
 const cors = require('cors');
@@ -17,10 +16,8 @@ export const rest = (): any => {
     app.use(cors());
 
     app.use(bodyParser.urlencoded({ extended: false }));
-
     app.use(bodyParser.json());
-
-    app.use('/', rootRoutes());
+    app.use(express.static('public'))
 
     app.use('/compile', compileRoutes(upload));
 
