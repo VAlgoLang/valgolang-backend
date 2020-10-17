@@ -11,6 +11,7 @@ ManimDSL API Backend Server using Express and TypeScript
 your own jar file from the ManimDSL repo and copy it into the root folder as `compiler.jar`)
 4. Run `npm start` to start up the API Server (defaults to port 5000)
 
+There is a basic test page to upload a manimdsl file to download either a zip or and mp4 containing your animation
 
 ### Endpoints
 
