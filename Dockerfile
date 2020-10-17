@@ -11,4 +11,6 @@ RUN cp /src/build/libs/ManimDSLCompiler-1.0-SNAPSHOT.jar compiler.jar
 
 RUN npm install
 
-ENTRYPOINT ["npm", "start"]
+RUN npm run build
+
+ENTRYPOINT ["node", "dist/main.js"]
