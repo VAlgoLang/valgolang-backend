@@ -18,7 +18,7 @@ export class CompileRequestProcessor {
             if(compileRequest.stylesheetFile) {
                 options +=  ` -s="${compileRequest.stylesheetFile.path}"`
             }
-            if (compileRequest.pythonFile == "true") {
+            if (compileRequest.pythonFile) {
                 options += " -p"
             }
             exec(`java -jar compiler.jar "${compileRequest.file.path}" -o="${uid}/${compileRequest.outputName}.mp4"${options}`, (error: any, stdout: any, stderr: any) => {
@@ -35,8 +35,8 @@ export class CompileRequestProcessor {
 
     }
 
-    async packageAndReturnPath(uid: string, outputName: string, generatePython: string) {
-        if (generatePython == "true") {
+    async packageAndReturnPath(uid: string, outputName: string, generatePython: boolean) {
+        if (generatePython) {
             const animationZip = `${uid}/animation.zip`;
             const zip = new AdmZip();
             zip.addLocalFile(`${uid}/${outputName}.mp4`)

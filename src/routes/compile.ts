@@ -1,5 +1,5 @@
 import {Request, Response, Router} from "express";
-import {CompileRequest} from "../utils/CompileRequest";
+import {CompileRequest, parseCompileRequest} from "../utils/CompileRequest";
 import {Multer} from "multer";
 import {CompileRequestProcessor} from "../utils/CompileRequestProcessor";
 
@@ -8,7 +8,7 @@ export const compileRoutes = (upload: Multer) => {
 
     router.post('/', upload.fields([{name: "file", maxCount: 1}, {name: "stylesheet", maxCount: 1}]), async (req: Request, res: Response) => {
         console.log("Received animation request")
-        let compileRequest = req.body as CompileRequest
+        let compileRequest = parseCompileRequest(req.body as CompileRequest)
         let files = req.files as {file: Express.Multer.File[], stylesheet: Express.Multer.File[]}
         compileRequest.file = files.file[0]
         compileRequest.stylesheetFile = files.stylesheet ? files.stylesheet[0] : undefined
