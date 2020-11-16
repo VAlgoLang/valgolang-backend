@@ -1,5 +1,6 @@
 export interface CompileRequest {
     file: Express.Multer.File;
-    pythonFile: boolean;
+    stylesheetFile?: Express.Multer.File;
+    pythonFile: string;
     outputName: string;
 }
