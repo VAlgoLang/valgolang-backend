@@ -15,12 +15,14 @@ export class CompileRequestProcessor {
         return new Promise(((resolve, reject) => {
             let options = ""
 
-            if(compileRequest.stylesheetFile) {
+            if (compileRequest.stylesheetFile) {
                 options +=  ` -s="${compileRequest.stylesheetFile.path}"`
             }
             if (compileRequest.pythonFile) {
                 options += " -p"
             }
+            options += ` -q="${compileRequest.quality}"`
+            console.log(options)
             exec(`java -jar compiler.jar "${compileRequest.file.path}" -o="${uid}/${compileRequest.outputName}.mp4"${options}`, (error: any, stdout: any, stderr: any) => {
                 if(error) {
                     console.log(stdout)

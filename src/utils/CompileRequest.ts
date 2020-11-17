@@ -3,6 +3,7 @@ export interface CompileRequest {
     stylesheetFile?: Express.Multer.File;
     pythonFile: boolean;
     outputName: string;
+    quality: string;
 }
 
 // Utility function to convert body to CompileRequest due to weak casting in TS
