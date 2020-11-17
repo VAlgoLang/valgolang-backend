@@ -1,5 +1,5 @@
 import {Request, Response, Router} from "express";
-import {CompileRequest, parseCompileRequest} from "../utils/CompileRequest";
+import {parseCompileRequest} from "../utils/CompileRequest";
 import {Multer} from "multer";
 import {CompileRequestProcessor} from "../utils/CompileRequestProcessor";
 
@@ -8,17 +8,10 @@ export const compileRoutes = (upload: Multer) => {
 
     router.post('/', upload.fields([{name: "file", maxCount: 1}, {name: "stylesheet", maxCount: 1}]), async (req: Request, res: Response) => {
         console.log("Received animation request")
-        let compileRequest = parseCompileRequest(req.body as CompileRequest)
+        let compileRequest = parseCompileRequest(req.body)
         let files = req.files as {file: Express.Multer.File[], stylesheet: Express.Multer.File[]}
         compileRequest.file = files.file[0]
         compileRequest.stylesheetFile = files.stylesheet ? files.stylesheet[0] : undefined
-
-        // set default to "out" and strip any extension
-        if(!compileRequest.outputName || compileRequest.outputName.length === 0) {
-            compileRequest.outputName = "out"
-        } else {
-            compileRequest.outputName = compileRequest.outputName.split(".")[0]
-        }
 
         let requestProcessor = new CompileRequestProcessor();
 
@@ -33,6 +26,21 @@ export const compileRoutes = (upload: Multer) => {
                     await requestProcessor.cleanup(folderUID)
                 }
             });
+        } catch (e) {
+            res.send({success: false, message: e})
+        }
+    });
+
+    router.post("/boundaries", upload.fields([{name: "file", maxCount: 1}, {name: "stylesheet", maxCount: 1}]), async (req: Request, res: Response) => {
+        let compileRequest = parseCompileRequest(req.body)
+        let files = req.files as {file: Express.Multer.File[], stylesheet: Express.Multer.File[]}
+        compileRequest.file = files.file[0]
+        compileRequest.stylesheetFile = files.stylesheet ? files.stylesheet[0] : undefined
+        let requestProcessor = new CompileRequestProcessor();
+
+        try {
+            let boundaries = await requestProcessor.getBoundaries(compileRequest)
+            res.send({success: true, data: boundaries})
         } catch (e) {
             res.send({success: false, message: e})
         }

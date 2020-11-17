@@ -9,5 +9,12 @@ export interface CompileRequest {
 export function parseCompileRequest(body: any) {
     let compileRequest = body as CompileRequest
     compileRequest.pythonFile = body.pythonFile == "true"
+    // set default to "out" and strip any extension
+    if(!compileRequest.outputName || compileRequest.outputName.length === 0) {
+        compileRequest.outputName = "out"
+    } else {
+        compileRequest.outputName = compileRequest.outputName.split(".")[0]
+    }
+
     return compileRequest
 }

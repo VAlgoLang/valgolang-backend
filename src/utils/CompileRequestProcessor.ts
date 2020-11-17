@@ -23,7 +23,7 @@ export class CompileRequestProcessor {
             }
             exec(`java -jar compiler.jar "${compileRequest.file.path}" -o="${uid}/${compileRequest.outputName}.mp4"${options}`, (error: any, stdout: any, stderr: any) => {
                 if(error) {
-                    console.log(stderr)
+                    console.log(stdout)
                     reject(stdout)
                 } else {
                     fs.unlink(compileRequest.file.path).then(() => {
@@ -32,7 +32,20 @@ export class CompileRequestProcessor {
                 }
             })
         }))
+    }
 
+    async getBoundaries(compileRequest: CompileRequest) {
+        return new Promise(((resolve, reject) => {
+            exec(`java -jar compiler.jar "${compileRequest.file.path}" -b`, (error: any, stdout: any, stderr: any) => {
+                if (error) {
+                    reject(stdout)
+                } else {
+                    fs.unlink(compileRequest.file.path).then(() => {
+                        resolve(JSON.parse(stdout.split("\n")[1]))
+                    })
+                }
+            })
+        }))
     }
 
     async packageAndReturnPath(uid: string, outputName: string, generatePython: boolean) {
