@@ -22,7 +22,6 @@ export class CompileRequestProcessor {
                 options += " -p"
             }
             options += ` -q="${compileRequest.quality}"`
-            console.log(options)
             exec(`java -jar compiler.jar "${compileRequest.file.path}" -o="${uid}/${compileRequest.outputName}.mp4"${options}`, (error: any, stdout: any, stderr: any) => {
                 if(error) {
                     console.log(stdout)
