@@ -39,6 +39,7 @@ export class CompileRequestProcessor {
         return new Promise(((resolve, reject) => {
             exec(`java -jar compiler.jar "${compileRequest.file.path}" -b`, (error: any, stdout: any, stderr: any) => {
                 if (error) {
+                    console.log(stderr)
                     reject(stdout)
                 } else {
                     fs.unlink(compileRequest.file.path).then(() => {
