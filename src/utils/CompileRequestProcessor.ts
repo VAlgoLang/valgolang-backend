@@ -35,9 +35,13 @@ export class CompileRequestProcessor {
         }))
     }
 
-    async getBoundaries(compileRequest: CompileRequest, type: string) {
+    async getBoundaries(compileRequest: CompileRequest) {
         return new Promise(((resolve, reject) => {
-            exec(`java -jar compiler.jar "${compileRequest.file.path}" -b=${type}`, (error: any, stdout: any, stderr: any) => {
+            let options = ""
+            if (compileRequest.stylesheetFile) {
+                options +=  `-s="${compileRequest.stylesheetFile.path}"`
+            }
+            exec(`java -jar compiler.jar "${compileRequest.file.path}" ${options} -b`, (error: any, stdout: any, stderr: any) => {
                 if (error) {
                     console.log(stderr)
                     reject(stdout)
