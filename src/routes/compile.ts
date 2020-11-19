@@ -32,6 +32,8 @@ export const compileRoutes = (upload: Multer) => {
     });
 
     router.post("/boundaries", upload.fields([{name: "file", maxCount: 1}, {name: "stylesheet", maxCount: 1}]), async (req: Request, res: Response) => {
+        // /boundaries?type=[auto | stylesheet]
+        let type = (req.query.type as string) || "auto"
         let compileRequest = parseCompileRequest(req.body)
         let files = req.files as {file: Express.Multer.File[], stylesheet: Express.Multer.File[]}
         compileRequest.file = files.file[0]
@@ -39,7 +41,7 @@ export const compileRoutes = (upload: Multer) => {
         let requestProcessor = new CompileRequestProcessor();
 
         try {
-            let boundaries = await requestProcessor.getBoundaries(compileRequest)
+            let boundaries = await requestProcessor.getBoundaries(compileRequest, type)
             res.send({success: true, data: boundaries})
         } catch (e) {
             res.send({success: false, message: e})

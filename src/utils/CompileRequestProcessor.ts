@@ -35,9 +35,9 @@ export class CompileRequestProcessor {
         }))
     }
 
-    async getBoundaries(compileRequest: CompileRequest) {
+    async getBoundaries(compileRequest: CompileRequest, type: string) {
         return new Promise(((resolve, reject) => {
-            exec(`java -jar compiler.jar "${compileRequest.file.path}" -b`, (error: any, stdout: any, stderr: any) => {
+            exec(`java -jar compiler.jar "${compileRequest.file.path}" -b=${type}`, (error: any, stdout: any, stderr: any) => {
                 if (error) {
                     console.log(stderr)
                     reject(stdout)
