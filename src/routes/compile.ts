@@ -46,9 +46,6 @@ export const compileRoutes = (upload: Multer) => {
         }
     });
 
-    router.post("/check", upload.single("file"), upload.single("stylesheet"), async (req: Request, res: Response) => {
-        // TODO: Add flag to compiler to return whether compiled correctly (semantic and syntantic check)
-    });
 
     return router;
 };
