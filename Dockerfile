@@ -7,7 +7,7 @@ RUN apt-get install -y nodejs
 COPY . /api/
 WORKDIR /api
 
-RUN cp /src/build/libs/ManimDSLCompiler-1.0-SNAPSHOT.jar compiler.jar
+RUN cp /src/build/libs/manimdsl-1.0-SNAPSHOT.jar compiler.jar
 
 RUN npm install
 
