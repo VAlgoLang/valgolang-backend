@@ -1,4 +1,4 @@
-import { rest } from './rest';
+import {rest} from './rest';
 import {CompileRequestProcessor} from "./utils/CompileRequestProcessor";
 
 const app = rest();
