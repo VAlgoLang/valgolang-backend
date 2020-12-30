@@ -1,0 +1,38 @@
+{
+  "dataStructures": {
+    "Array": {
+      "borderColor": "yellow",
+      "textColor": "green",
+      "animate": {
+        "textColor": "red"
+      }
+    }
+  },
+  "syntaxHighlightingOn": true,
+  "positions": {
+    "_variables": {
+      "x": 0,
+      "y": -3,
+      "width": 4,
+      "height": 4
+    },
+    "transpose": {
+      "x": 3,
+      "y": -4,
+      "width": 4,
+      "height": 5
+    },
+    "original": {
+      "x": -1,
+      "y": -3,
+      "width": 4,
+      "height": 4
+    },
+    "_code": {
+      "x": 0,
+      "y": -2,
+      "width": 4,
+      "height": 4
+    }
+  }
+}
