@@ -1,4 +1,5 @@
 import {compileRoutes} from "./routes/compile";
+import {examplesRoutes} from "./routes/examples";
 
 const cors = require('cors');
 
@@ -20,6 +21,7 @@ export const rest = (): any => {
     app.use(express.static('public'))
 
     app.use('/compile', compileRoutes(upload));
+    app.use('/examples', examplesRoutes(upload));
 
     return app;
 

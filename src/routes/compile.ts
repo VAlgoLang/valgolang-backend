@@ -47,6 +47,5 @@ export const compileRoutes = (upload: Multer) => {
         }
     });
 
-
     return router;
 };
