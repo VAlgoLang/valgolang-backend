@@ -1,0 +1,19 @@
+fun parensMatch(array: Array<char>): boolean {
+    let stack = Stack<char>();
+    for j in range(array.size()) {
+        let currentChar = array[j];
+        if (currentChar == '[') {
+            stack.push(currentChar);
+        } else if (currentChar == ']') {
+            if (stack.pop() != '[') {
+                return false;
+            }
+        }
+    }
+    return stack.isEmpty();
+}
+
+
+let x = Array<char>(){'[', '[', ']'};
+
+let result = parensMatch(x);

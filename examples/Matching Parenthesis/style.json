@@ -1,0 +1,17 @@
+{
+  "dataStructures": {
+    "Array": {
+      "creationStyle": "Write",
+      "animate": {
+        "textColor": "RED",
+        "animationStyle": "Indicate"
+      }
+    },
+    "Stack": {
+      "animate": {
+        "textColor": "RED",
+        "borderColor": "RED"
+      }
+    }
+  }
+}
