@@ -2,12 +2,6 @@
   "variables": {
     "dp": {
       "textColor": "blue",
-      "animate": {
-      }
-    }
-  },
-  "dataStructures": {
-    "List": {
       "borderColor": "yellow",
       "animate": {
         "textColor": "red"
