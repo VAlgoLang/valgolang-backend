@@ -27,7 +27,7 @@ export class CompileRequestProcessor {
             args.push(`-s=${compileRequest.stylesheetFile.path}`)
         }
         if (compileRequest.pythonFile) {
-            args.push(" -p")
+            args.push("-p")
         }
         args.push(`-q=${compileRequest.quality || "low"}`)
         args.push("--progress_bars")
