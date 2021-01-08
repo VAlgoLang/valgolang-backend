@@ -7,7 +7,7 @@
     }
   },
   "dataStructures": {
-    "Array": {
+    "List": {
       "borderColor": "yellow",
       "animate": {
         "textColor": "red"
