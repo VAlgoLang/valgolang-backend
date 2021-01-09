@@ -50,7 +50,7 @@ export const compileRoutes = (upload: Multer) => {
         let logFile = `${uid}-stdout.log`;
         let spawnedProcess = processes.get(uid)
         if(spawnedProcess === undefined) {
-            res.send({success: false, data: "Video deleted"})
+            res.send({success: false, data: ["Video deleted"]})
             return
         } else {
             if(!spawnedProcess.complete) {
@@ -64,8 +64,8 @@ export const compileRoutes = (upload: Multer) => {
                 let filePath = await requestProcessor.packageAndReturnPath(spawnedProcess!.uid, spawnedProcess!.compileRequest.outputName, spawnedProcess!.compileRequest.pythonFile)
                 res.download(filePath, async (err) => {
                     if (!err) {
-                        processes.delete(spawnedProcess!!.uid)
                         await requestProcessor.cleanup(uid)
+                        processes.delete(spawnedProcess!!.uid)
                     }
                 });
             }
