@@ -13,7 +13,7 @@ export const examplesRoutes = (upload: Multer) => {
     router.get('/example', async (req: Request, res: Response) => {
         const fileName = req.query.file
         const files: string[] = fs.readdirSync(`examples/${fileName}`)
-        const manimFile = files.find((file: string) => file.endsWith('.manimdsl'))
+        const manimFile = files.find((file: string) => file.endsWith('.val'))
         const stylesheetFile = files.find((file: string) => file.endsWith('.json'))
         const readManimFile = fs.readFileSync(`examples/${fileName}/${manimFile}`).toString()
         const readStylesheetFile = fs.readFileSync(`examples/${fileName}/${stylesheetFile}`).toString()

@@ -1,5 +1,5 @@
 {
-  "name": "manimdsl-api",
+  "name": "valgolang-api",
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc",
