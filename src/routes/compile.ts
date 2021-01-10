@@ -9,7 +9,7 @@ export const compileRoutes = (upload: Multer) => {
 
     const processes = new Map<string, SpawnedProcess>()
 
-    router.post('/', upload.fields([{name: "file", maxCount: 1}, {name: "stylesheet", maxCount: 1}]), async (req: Request, res: Response) => {
+    router.post('/compile', upload.fields([{name: "file", maxCount: 1}, {name: "stylesheet", maxCount: 1}]), async (req: Request, res: Response) => {
         console.log("Received animation request")
         let compileRequest = parseCompileRequest(req.body)
         let files = req.files as {file: Express.Multer.File[], stylesheet: Express.Multer.File[]}

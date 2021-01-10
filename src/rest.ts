@@ -23,7 +23,7 @@ export const rest = (): any => {
         max: 20
     });
 
-    app.use('/compile', limiter);
+    app.use('/compile/compile', limiter);
     app.use('/compile', compileRoutes(upload));
     app.use('/examples', examplesRoutes(upload));
 
