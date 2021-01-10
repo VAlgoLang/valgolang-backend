@@ -20,5 +20,11 @@ export const examplesRoutes = (upload: Multer) => {
         res.send({"manimFile": readManimFile, "stylesheetFile": readStylesheetFile})
     });
 
+    router.get('/example/video', async (req: Request, res: Response) => {
+        const fileName = req.query.file
+        const filePath = `examples/${fileName}/example.mp4`
+        res.download(filePath);
+    });
+
     return router;
 };
