@@ -7,7 +7,7 @@ export const examplesRoutes = (upload: Multer) => {
     const router = Router();
 
     router.get('/list', async (req: Request, res: Response) => {
-        res.send(fs.readdirSync("examples").filter((folder: string) => folder[0] != '.'))
+        res.send({success: true, data: fs.readdirSync("examples").filter((folder: string) => folder[0] != '.')})
     });
 
     router.get('/example', async (req: Request, res: Response) => {
