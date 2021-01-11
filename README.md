@@ -8,7 +8,7 @@ VAlgoLang API Backend Server using Express and TypeScript
 
 If you haven't installed the VAlgoLang Compiler or want a quick way to startup the best way is to use docker:
 
-` docker run -p 5000:5000 manimdsl/manimdsl-api  `
+` docker run -p 5000:5000 valgolang/valgolang-backend  `
 
 And go to `localhost:5000` in a browser.
 
